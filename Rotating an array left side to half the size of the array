@@ -23,4 +23,37 @@ int main()
     {
         cout<<arr[i]<<" ";
     }
+} //time complexity O(x^2)
+
+More efficient
+#include<bits/stdc++.h>
+using namespace std;
+void re(int arr[],int s,int e)
+{
+    while(s<e)
+    {
+        int y=arr[s];
+        arr[s]=arr[e];
+        arr[e]=y;
+        s++;
+        e--;
+    }
 }
+int main()
+{
+    int x;
+    cin>>x;
+    int arr[x];
+    for(int i=0;i<x;i++)
+    {
+        cin>>arr[i];
+    }
+    int k=x/2;
+    re(arr,0,x-1);
+    re(arr,0,k-1);
+    re(arr,k,x-1);
+    for(int i=0;i<x;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+} //Time complexity : O(x)
