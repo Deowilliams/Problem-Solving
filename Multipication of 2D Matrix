@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+    int a1[m][n];  // First matrix
+
+    // Input for first matrix
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> a1[i][j];
+        }
+    }
+
+    int o, p;
+    cin >> o >> p;
+    int a2[o][p];  // Second matrix
+
+    // Input for second matrix
+    for (int i = 0; i < o; i++) {
+        for (int j = 0; j < p; j++) {
+            cin >> a2[i][j];
+        }
+    }
+
+    // Matrix multiplication is possible only if the number of columns in the first matrix (n)
+    // equals the number of rows in the second matrix (o)
+    if (n != o) {
+        cout << "Multiplication is not possible";
+    } else {
+        int arr[m][p];  // Resultant matrix
+        // Initialize the resultant matrix with 0
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                arr[i][j] = 0;
+            }
+        }
+
+        // Matrix multiplication logic
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                for (int k = 0; k < n; k++) {
+                    arr[i][j] += a1[i][k] * a2[k][j];  // Multiply and sum
+                }
+            }
+        }
+
+        // Output the resultant matrix
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                cout << arr[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    
+    return 0;
+}
