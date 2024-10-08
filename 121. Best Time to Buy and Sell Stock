@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& p) {
+        int sel=0;
+        int buy=p[0];
+        for(int i=1;i<p.size();i++)
+        {
+            if(buy>p[i]){
+            buy=p[i];
+            }
+            else if((p[i]-buy)>sel){
+            sel=p[i]-buy;
+            }
+            
+        }
+        return sel;
+    }
+};
