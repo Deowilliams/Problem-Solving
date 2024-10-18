@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) { 
+       if(s==goal)
+       return true;
+        for(int i=1;i<s.length();i++)
+        {
+            string x=s;
+            x=re(x,0,x.length()-1);
+            x=re(x,0,i-1);
+            x=re(x,i,x.length()-1);
+            cout<<x<<endl;
+            if(x==goal){
+                
+            return true;
+            }
+        }
+        return false;
+
+    }
+private :
+   string re(string x,int l,int r)
+   {
+       while(l<r)
+       {
+            swap(x[l],x[r]);
+            l++;
+            r--;
+       }
+       return x;
+   }
+
+};
