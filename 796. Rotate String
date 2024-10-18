@@ -9,7 +9,6 @@ public:
             x=re(x,0,x.length()-1);
             x=re(x,0,i-1);
             x=re(x,i,x.length()-1);
-            cout<<x<<endl;
             if(x==goal){
                 
             return true;
