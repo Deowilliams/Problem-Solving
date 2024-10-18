@@ -1,0 +1,45 @@
+#include <vector>
+
+class Solution {
+public:
+    int maximumSwap(int num) {
+        
+        std::vector<int> arr;
+        int x = num;
+        
+        while (x != 0) {
+            arr.insert(arr.begin(), x % 10);
+            x /= 10;
+        }
+        
+        int l = arr.size();  
+        
+        
+        for (int i = 0; i < l; i++) {
+            int maxDigit = arr[i];
+            int maxIdx = i;
+            
+            
+            for (int j = i + 1; j < l; j++) {
+                if (arr[j] >= maxDigit) {
+                    maxDigit = arr[j];
+                    maxIdx = j;
+                }
+            }
+            
+            
+            if (maxIdx != i && maxDigit > arr[i]) {
+                std::swap(arr[i], arr[maxIdx]);
+                break;
+            }
+        }
+        
+        
+        x = 0;
+        for (int i = 0; i < l; i++) {
+            x = x * 10 + arr[i];
+        }
+        
+        return x;
+    }
+};
