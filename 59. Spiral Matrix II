@@ -1,0 +1,39 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> r(n, vector<int>(n));
+        int c=1;
+        int t=n*n+1;
+        int mir=0,mic=0;
+        int mar=n-1,mac=n-1;
+        while(c!=t)
+        {
+            for(int i=mic;i<=mac&&c<t;i++)
+            {
+                r[mir][i]=c;
+                c++;
+            }
+            mir++;
+            for(int i=mir;i<=mar&&c<t;i++)
+            {
+                r[i][mac]=c;
+                c++;
+            }
+            mac--;
+            for(int i=mac;i>=mic&&c<t;i--)
+            {
+                r[mar][i]=c;
+                c++;
+            }
+            mar--;
+            for(int i=mar;i>=mir&&c<t;i--)
+            {
+                r[i][mic]=c;
+                c++;
+            }
+            mic++;
+        }
+        return r;
+
+    }
+};
