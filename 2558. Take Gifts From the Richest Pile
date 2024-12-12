@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    long long pickGifts(vector<int>& g, int k) {
+        // Create a max-heap using a priority queue
+        priority_queue<int> maxHeap;
+
+        // Add all elements from the array to the max-heap
+        for (int val : g)
+            maxHeap.push(val);
+
+        // Perform the operation k times or until the largest value is 1
+        for (int i = 0; i < k && maxHeap.top() > 1; i++) {
+            int x = maxHeap.top();  // Get the maximum element
+            maxHeap.pop();          // Remove the maximum element from the heap
+            maxHeap.push(sqrt(x));  // Add the square root of the maximum back to the heap
+        }
+
+        // Calculate the sum of all elements in the max-heap
+        long long sum = 0;
+        while (!maxHeap.empty()) {
+            sum += maxHeap.top();
+            maxHeap.pop();
+        }
+
+        return sum;  // Return the total sum
+    }
+};
