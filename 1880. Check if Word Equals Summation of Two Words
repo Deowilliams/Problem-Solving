@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isSumEqual(String f, String s, String t) {
+        int a=0;
+        int b=0;
+        int c=0;
+        for(int i=0;i<f.length();i++)
+        {
+            char d=f.charAt(i);
+            a*=10;
+            a+=d-97;
+        }
+        for(int i=0;i<s.length();i++)
+        {
+            char d=s.charAt(i);
+            b*=10;
+            b+=d-97;
+        }
+        for(int i=0;i<t.length();i++)
+        {
+            char d=t.charAt(i);
+            c*=10;
+            c+=d-97;
+        }
+        if(a+b==c)
+        return true;
+        else 
+        return false;
+    }
+}
