@@ -1,0 +1,73 @@
+// You are using Java
+import java.util.*;
+class Node{
+    int d;
+    Node left,right;
+    
+    Node(int d)
+    {
+        this.d=d;
+        this.left=null;
+        this.right=null;
+    }
+}
+class Main{
+    Node root;
+    Main(){
+        this.root=null;
+    }
+    public Node insert(int d,Node root)
+    {
+        
+        if(root==null){
+            return new Node(d);
+        }
+        if(d<root.d)
+        root.left= insert(d,root.left);
+        else
+        root.right=insert(d,root.right);
+        
+        return root;
+        
+    }
+    public void disp(Node root)
+    {
+        if(root==null)
+        return;
+        disp(root.left);
+        System.out.println(root.d);
+        disp(root.right);
+    }
+    public boolean findsibling(Node root,int a,int b)
+    {
+        if(root==null)
+        return false;
+        if(root.left!=null&&root.right!=null){
+            int l=root.left.d;
+            int r=root.right.d;
+            if((l==a&&r==b)||(l==b&&r==a))
+            return true;
+        }
+        return findsibling(root.left,a,b)||findsibling(root.right,a,b);
+    }
+    public static void main(String aef[])
+    {
+        Scanner s=new Scanner(System.in);
+        Main t=new Main();
+        int x=s.nextInt();
+        for(int i=0;i<x;i++)
+        {
+            int y=s.nextInt();
+            t.root=t.insert(y,t.root);
+        }
+        t.disp(t.root);
+        int a=s.nextInt();
+        int b=s.nextInt();
+        boolean e=t.findsibling(t.root,a,b);
+        if(e)
+        System.out.println("True");
+        else
+        System.out.println("False");
+        
+    }
+}
